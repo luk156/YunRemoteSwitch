@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 import requests
+from auth import requires_auth
 app = Flask(__name__)
 
+@requires_auth
 @app.route('/')
 def hello_world():
     return render_template('index.html')
@@ -10,12 +12,12 @@ def hello_world():
 @app.route('/digital/read/<pin>')
 def digital_read(pin):
     # show the user profile for that user
-    r = requests.get('http://localhost/arduino/digital/' + str(int(pin)+3))
+    r = requests.get('http://root:arduino03@localhost/arduino/digital/' + str(int(pin)+3))
     return r.text
 
 
 @app.route('/digital/write/<pin>/<status>')
 def digital_write(pin, status):
     # show the user profile for that user
-    r = requests.get('http://localhost/arduino/digital/' + str(int(pin)+3) + '/' + status)
+    r = requests.get('http://root:arduino03@localhost/arduino/digital/' + str(int(pin)+3) + '/' + status)
     return r.text

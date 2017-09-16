@@ -14,7 +14,7 @@
 <div class="container">
     <!-- Page Content goes here -->
     <div class="row">
-        <div class="col s6 center-align"><h5>Interruttore</h5>
+        <div class="col s6 center-align"><h5>Interruttore 1</h5>
             <div class="switch">
                 <label>
                     Off
@@ -24,7 +24,7 @@
                 </label>
             </div>
         </div>
-        <div class="col s6 center-align"><h5>Interruttore</h5>
+        <div class="col s6 center-align"><h5>Interruttore 2</h5>
             <div class="switch">
                 <label>
                     Off
@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s6 center-align"><h5>Interruttore</h5>
+        <div class="col s6 center-align"><h5>Interruttore 3</h5>
             <div class="switch">
                 <label>
                     Off
@@ -46,7 +46,7 @@
                 </label>
             </div>
         </div>
-        <div class="col s6 center-align"><h5>Interruttore</h5>
+        <div class="col s6 center-align"><h5>Interruttore 4</h5>
             <div class="switch">
                 <label>
                     Off
@@ -74,7 +74,7 @@
             var callback = function(i){
                 return function (res) {
                     console.log(res);
-                    switchStatus[i] = res == '1';
+                    switchStatus[i] = res.trim() == '1';
                     switchEls[i].prop('checked', switchStatus[i]);
                 }
             }(i);
@@ -84,8 +84,8 @@
 
 
         $('input[type=checkbox]').change(function () {
-            var id = $('this').data('id');
-            $.get('/digital/write/' + i + '/' + ($(this).is(':checked') ? '1' : '0'), function(res){
+            var id = $(this).data('id');
+            $.get('/digital/write/' + id + '/' + ($(this).is(':checked') ? '1' : '0'), function(res){
                 console.log(res);
             });
 
