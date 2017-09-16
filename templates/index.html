@@ -79,13 +79,13 @@
                 }
             }(i);
 
-            $.get('http://localhost/arduino/digital/' + (i + 3), callback);
+            $.get('/digital/read/' + i, callback);
         }
 
 
         $('input[type=checkbox]').change(function () {
             var id = $('this').data('id');
-            $.get('http://localhost/arduino/digital' + (i + 3) + '/' + ($(this).is(':checked') ? '1' : '0'), function(res){
+            $.get('/digital/write/' + i + '/' + ($(this).is(':checked') ? '1' : '0'), function(res){
                 console.log(res);
             });
 
