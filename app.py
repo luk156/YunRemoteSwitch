@@ -3,9 +3,10 @@ import requests
 from auth import requires_auth
 app = Flask(__name__)
 
-@requires_auth
+
 @app.route('/')
-def hello_world():
+@requires_auth
+def index():
     return render_template('index.html')
 
 
