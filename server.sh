@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /root/YunRemoteSwitch-master/
+cd /root/YunRemoteSwitch/
 export FLASK_APP=app.py
 flask run --host=0.0.0.0

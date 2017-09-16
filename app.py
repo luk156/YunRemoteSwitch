@@ -11,6 +11,7 @@ def index():
 
 
 @app.route('/digital/read/<pin>')
+@requires_auth
 def digital_read(pin):
     # show the user profile for that user
     r = requests.get('http://root:arduino03@localhost/arduino/digital/' + str(int(pin)+3))
@@ -18,6 +19,7 @@ def digital_read(pin):
 
 
 @app.route('/digital/write/<pin>/<status>')
+@requires_auth
 def digital_write(pin, status):
     # show the user profile for that user
     r = requests.get('http://root:arduino03@localhost/arduino/digital/' + str(int(pin)+3) + '/' + status)
